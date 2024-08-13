@@ -72,3 +72,61 @@ transform.Translate(Vec * Time.deltaTime);
 Vector3.Lerp(Vec1, Vec2, T * Time.deltaTime);
 */
 
+
+
+
+컴퓨넌트 ≒ 속성 
+오브젝트 -> 컴포넌트 추가 -> RigidBody  //물리효과를 받기 위한 컴포넌트
+RigidBody
+Mass = 무게
+Use Gravity = 중력 적용
+Is Kinematic = 외부 물리 효과 무시
+
+Sphere Collider  //충돌 효과, 실제 보이는것보다 크거나 작게 출동 면적 정할수있음
+
+프로젝트 -> 생성 -> 머터리얼... -> 오브젝트에 끌어 넣기
+알베도 = 색상  //알베도 왼쪽 빈칸에 사진 넣으면 적용 가능
+이미션 = 발광
+타일링 = 같은 무늬 반복 패턴 생성
+
+
+프로젝트 -> 생성 -> 물리 머터리얼 -> 오브젝트에 끌어 넣기
+Sphere Collider에 들어감
+바운스 정도 = 튕기는 정도
+바운스 결합 = 다음 탄성 정도 계산
+
+
+
+움직임
+
+Rigidbody rigid;  //Rigidbody 선언
+
+rigid.velocity = new Vector3(1, 2, 3);  //설정한 벡터로 계속 이동함.
+rigid.AddForce(Vector3.up, ForceMode.Impulse);  //특정 벡터로 힘을 줘 움직이게 하는것, ForceMode.Inpulse를 제일 많이 사용한다 함.
+
+//sample
+//FixedUpdate 내부에 점프 구현시 키 씹힘 현상이 있어 Update에서 키 입력을 인식하고 FixedUpdate에서 반영하도록 작성
+bool jumpInput = false;
+void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))  //GetKeyDown누른 프레임에만 인식되어 씹힘 현상이 있을수 있음.
+        {
+            jumpInput = true;  // 점프 입력을 true로 설정
+        }
+    }
+
+void FixedUpdate(){  //물리적인 동작은 여기에 쓰도록 권장됨. 
+    if (jumpInput)
+        {
+            rigid.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            Debug.Log(rigid.velocity);
+            jumpInput = false;  // 점프 입력을 다시 false로 설정
+        }
+
+        Vector3 vec = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));  //화살표 키를 눌러서 상하좌우로 움직이기
+        rigid.AddForce(vec / 2, ForceMode.Impulse);
+
+        rigid.AddTorque(Vector3.up);  //제자리에서 회전. 다른 값을 주면 특정 방향으로 회전력을 가짐.
+    }
+
+}
