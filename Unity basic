@@ -40,8 +40,23 @@ void OnDestroy(){
   //오브젝트 삭제될 때 실행
 }
 
+
 <<Input Class>>
 //Unity에서 키보드 마우스 등의 입력을 컨트롤 ex)Input.GetKeyDown(KeyCode.S);
 anyKeyDown anyKey anyKeyup  //bool 반환, 키보드 누를때 누르고있을때 키보드뗄때
 GetKeyDown() GetKey() GetKeyUp() //bool 반환, 파라미터로 KeyCode.~~ [ex)KeyCode.Return = 엔터 / KeyCode.LeftArrow = 화살표 왼쪽 등]
 GetMouseButtonDown() GetMouseButton() GetMouseButtonUp() //bool 반환, 파라미터로 0 = 좌클릭, 1 = 우클 
+
+에디터 -> 프로젝트 매니저 -> 인풋매니저 //입력 사용자 지정 설정 KeyCode.~~ 대신 "Jump", "Horizontal" 등으로 대체 가능
+
+Horizontal, Vertical 에만 적용
+GetAxis()  //수평, 수직 입력 받으면 0~1의 값을 가지는 float 반환, 가중치가 있어 꾹 누르면 0에서 1까지 상승
+GetAxisRaw()  //가중치 없이 입력받으면 -1, 0, 1 반환 (왼쪽 -1, 양쪽 0, 오른쪽 1)
+
+
+<<Transform Class>>
+//오브젝트 이동에 사용, 오브젝트는 변수 transform을 항상 기본적으로 갖고 있음
+Translate() //오브젝트 파라미터 값의 방향과 크기 만큼 이동
+ex) Vector3 vec = new Vector3(1, 2, 3); transform.Translate(vec);
+
+12
