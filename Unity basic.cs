@@ -1,4 +1,4 @@
-Unity 기본적인 세팅 및 조작
+Unity 기본 골드메탈 유니티 기초강화 1~14 中
 
 카메라 컨트롤 Q W E R T + Mouse
 
@@ -59,4 +59,16 @@ GetAxisRaw()  //가중치 없이 입력받으면 -1, 0, 1 반환 (왼쪽 -1, 양
 Translate() //오브젝트 파라미터 값의 방향과 크기 만큼 이동
 ex) Vector3 vec = new Vector3(1, 2, 3); transform.Translate(vec);
 
-12
+<<vector3 Class>>
+MoveTowards()  //등속이동, 파라미터로 현재위치, 목적지, 이동 속도 
+//ex)Vector3 target = new Vector3(8, 1.5f, 0); transform.position = Vector3.MoveTowards(transform.position, target, 2f);
+SmoothDamp() //파라미터로 현재위치, 목적지, 참조 속도, 이동 속도, 참조속도는 보통 Vector3.zero
+Lerp() //선형 보간, 파라미터로 현재위치, 목적지, 이동 속도
+SLerp()  //구면 성형 보간, 포물선으로 이동, 파라미터로 현재위치, 목적지, 이동 속도
+
+Time.deltaTime  //프레임에 따른 업데이트 주기 불균형을 보완하기 위해 사용
+/*ex)
+transform.Translate(Vec * Time.deltaTime);
+Vector3.Lerp(Vec1, Vec2, T * Time.deltaTime);
+*/
+
