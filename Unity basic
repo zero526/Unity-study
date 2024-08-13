@@ -1,0 +1,47 @@
+Unity 기본적인 세팅 및 조작
+
+카메라 컨트롤 Q W E R T + Mouse
+
+콘솔 분리
+
+프로젝트 -> 우클릭 -> 생성 -> C#스크립트 -> 오브젝트 클릭 -> 인스펙터에 옮기기
+
+Debug.Log("hello"); //콘솔창에 출력
+
+void Awake(){
+  //게임 오브젝트 생성 시, 최초 실행, 한번만 실행
+}
+
+void OnEnalbe(){
+  //게임 오브젝트가 활성화 되었을 때 실행
+}
+
+void Start(){
+  //업데이트 시작 직전에 한번만 실행
+}
+
+void FixedUpdate(){
+  //물리 연산 업데이트, 물리 연산하기 전에 실행, 고정된 실행주기로 반복적으로 계속 실행
+}
+
+void Update(){
+  //게임 로직 업데이트, 물리연산 제외 주기적으로 변하는 로직 입력
+}
+
+void LateUpdate(){
+  //모든 업데이트가 끝난 후 마지막으로 호출, 보통 캐릭터를 따라가는 카메라, 후처리 등
+}
+
+void OnDisable(){
+  //오브젝트 비활성화 되었을 때 실행
+}
+
+void OnDestroy(){
+  //오브젝트 삭제될 때 실행
+}
+
+<<Input Class>>
+//Unity에서 키보드 마우스 등의 입력을 컨트롤 ex)Input.GetKeyDown(KeyCode.S);
+anyKeyDown anyKey anyKeyup  //bool 반환, 키보드 누를때 누르고있을때 키보드뗄때
+GetKeyDown() GetKey() GetKeyUp() //bool 반환, 파라미터로 KeyCode.~~ [ex)KeyCode.Return = 엔터 / KeyCode.LeftArrow = 화살표 왼쪽 등]
+GetMouseButtonDown() GetMouseButton() GetMouseButtonUp() //bool 반환, 파라미터로 0 = 좌클릭, 1 = 우클 
