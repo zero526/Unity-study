@@ -130,3 +130,49 @@ void FixedUpdate(){  //물리적인 동작은 여기에 쓰도록 권장됨.
     }
 
 }
+
+
+물리 충돌 이벤트
+//오브젝트 Mesh Renderer 및 Material 기져오기
+MeshRenderer mesh;
+Material matl
+mesh = GetComponent<MeshRenderer>();
+mat = mesh.material;
+
+private void OnCollisionEnter(Collision collision){  //충돌했을 때
+}
+private void OnCollisionStay(Collision collision){   //충돌중 = 붙어있을 때
+}
+private void OnCollisionExit(Collision collision)   //충돌후 떨어졌을 때
+}
+//color = 기본 색상 클래스
+//color32 = 255 색상 클래스
+
+mat.color = new Color(0, 0, 0);  //0~255
+
+//ex  부딛히면 색상 변경
+if(collision.gameObject.name == "ObjectName"){  //바닥도 오브젝트이기 때문에 특정 오브젝트와 충돌했을 때 동작하기 위해
+    mat.color = new Color(255, 0, 0);
+}
+
+//오브젝트 반투명
+Material -> Rendering Mode = Transparent -> 알베도 -> A알파 값 변경
+
+//오브젝트 통과
+Box Collider -> trigger 트리거 체크
+
+private void OnTriggerEnter(Collider other){  //겹치는 동시에
+}
+private void OnTriggerStay(Collider other){  //겹쳐 있을 때
+}
+private void OnTriggerExit(Collider other){  //겹치는게 끝났을 때
+}
+
+//ex  특정 공간 안에서 위로 힘을 주기
+private void OnTriggerStay(Collider other){
+    if (other.gameObject.name == "Cube"){
+        rigid.AddForce(Vector3.up, ForceMode.Impulse);
+    }
+}
+
+// Collision != Collider 서로 다른 클래스
