@@ -176,3 +176,6 @@ private void OnTriggerStay(Collider other){
 }
 
 // Collision != Collider 서로 다른 클래스
+
+
+//상용화 시 폰트는 항상 라이센스 확인하기
