@@ -194,6 +194,7 @@ private void OnTriggerStay(Collider other){
 
 User Interface / UI
 //UI 수정할땐 2D모드로 보면서 하기
+using UnityEngine.UI;
 
 계층구조 우클릭 -> 캔버스
 캔버스 우클릭 -> UI -> 레거시 -> 텍스트 버튼 이미지 등등
@@ -277,9 +278,25 @@ ex)(other.name == "item") => (other.tag == "items")
 //일반적으로 UI, 카메라 업데이트는 LateUpdate() 사용함
 Vector3 Offset;
 void Awake(){  //플레이어와 일정한 거리를 유지하는 카메라
-  playerTransform = GameObject.FindGameObjectWithTag("Player").transform; //이하 Find()
+  playerTransform = GameObject.FindGameObjectWithTag("Player").transform; //이하 Find(), FindGameObjectWithTag에 비해 최적화에 적합하지 않음
   Offset = transform.pisition - playerTransform.position;
 }
 void LateUpdate(){
   transform.posirion = playerTransform.position + Offset;
 }
+
+
+게임 상태 일시 저장 및 되돌리기
+//형태없이 전반적인 로직을 가진 오브젝트 = 게임 매니저
+ex) GameManagerLogic.cs
+public int totalItemCount;
+public int stage;
+
+//player에서 사용할때 선언
+public GameManagerLogic manager;
+manager.totalItemCount
+
+using UnityEngine.SceneManagement;
+SceneManagement.LoadScene("example1"); //저장한 씬을 불러옴
+
+//씬을 불러오려면 Buile Setting에서 추가해야함
