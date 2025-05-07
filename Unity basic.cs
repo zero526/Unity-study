@@ -270,3 +270,16 @@ A.Play(); //실행시킬 타이밍에 코드 배치
 //같은 아이템 여러개일때 태크로 묶어서 같은 방식으로 처리되게 가능함
 오브젝트 -> 인터프리터 -> 맨 위쪽에 Tag
 ex)(other.name == "item") => (other.tag == "items")
+
+
+카메라
+//카메라용 스크립트 필요
+//일반적으로 UI, 카메라 업데이트는 LateUpdate() 사용함
+Vector3 Offset;
+void Awake(){  //플레이어와 일정한 거리를 유지하는 카메라
+  playerTransform = GameObject.FindGameObjectWithTag("Player").transform; //이하 Find()
+  Offset = transform.pisition - playerTransform.position;
+}
+void LateUpdate(){
+  transform.posirion = playerTransform.position + Offset;
+}
