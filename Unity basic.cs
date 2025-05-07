@@ -110,6 +110,12 @@ void Update(){
   transform.Rotate(new Vector3(a, b, c));
 }
 
+//좌표계 명시
+//Vector3 힘의 방향은 로컬좌표와 글로벌좌표로 구분됨.
+space.Self
+space.World
+ex) transform.Rotate(new Vector3(a, b, c), space.World);
+
 //sample
 //FixedUpdate 내부에 점프 구현시 키 씹힘 현상이 있어 Update에서 키 입력을 인식하고 FixedUpdate에서 반영하도록 작성
 bool jumpInput = false;
