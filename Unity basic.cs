@@ -258,3 +258,7 @@ ex)void OnTriggerEnter(Collider other){ //플레이어랑 부딪히면 비활성
     gameObject.SetActive(flase);
   }
 }
+
+//사운드
+인터프리터 -> Add Compoment -> AudioSource 생성
+AudioClip에 음성파일 끌어다 놓기
