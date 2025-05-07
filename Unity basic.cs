@@ -105,6 +105,11 @@ Rigidbody rigid;  //Rigidbody 선언
 rigid.velocity = new Vector3(1, 2, 3);  //설정한 벡터로 계속 이동함.
 rigid.AddForce(Vector3.up, ForceMode.Impulse);  //특정 벡터로 힘을 줘 움직이게 하는것, ForceMode.Inpulse를 제일 많이 사용한다 함.
 
+//물체 제자리 회전
+void Update(){
+  transform.Rotate(new Vector3(a, b, c));
+}
+
 //sample
 //FixedUpdate 내부에 점프 구현시 키 씹힘 현상이 있어 Update에서 키 입력을 인식하고 FixedUpdate에서 반영하도록 작성
 bool jumpInput = false;
