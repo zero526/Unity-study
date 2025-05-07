@@ -262,3 +262,6 @@ ex)void OnTriggerEnter(Collider other){ //플레이어랑 부딪히면 비활성
 //사운드
 인터프리터 -> Add Compoment -> AudioSource 생성
 AudioClip에 음성파일 끌어다 놓기
+AudioSource A;
+void Awake() { A = GetCompoment<AudioSource>(); }
+A.Play(); //실행시킬 타이밍에 코드 배치
