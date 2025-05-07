@@ -248,3 +248,13 @@ shift와 alt를 사용해 피벗과 포지션 지정
 
 
 스크립트 내부의 변수앞에 public 붙이면 유니티 UI에서도 값 조정 가능
+
+//오브젝트 활성화 함수
+//코인같은거 먹었을때 없어지도록 할 때 사용됨
+gameObject.SetActive(bool);
+
+ex)void OnTriggerEnter(Collider other){ //플레이어랑 부딪히면 비활성화
+  if(other.name == "Player"){
+    gameObject.SetActive(flase);
+  }
+}
