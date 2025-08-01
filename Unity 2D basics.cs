@@ -95,3 +95,29 @@ using Mathf.Abs; //절댓값, Mathf는 유니티에서 제공하는 수학 라�
 
 //플레이어 이동시 방향키를 입력받아 좌/우를 바꾸는 애니메이션 적용 시 실제 이동방향과 다른 애니메이션인 상태로 움직이는 경우가 있음
 //사용자 입력이 아닌 실제 이동방향에 따라 애니메이션을 설정해야 오류가 안 날듯 함.
+
+//GameObject.Find("ABC") 의 경우 ABC가 아직 준비되지 않은 경우 찾을수 없는 에러가 발생할 수 있음.
+//Start() 내부에 넣어 조금 늦게 ABC를 찾게 해 오류를 방지.
+
+
+/* 부드럽게 플레이어를 따라 움직이는 카메라 스크립트 작성시 도트 그래픽이 뭉개져 보일수 있음.
+void LateUpdate()
+{
+    // 플레이어 위치를 기준으로 부드럽게 따라가기
+    Vector3 targetPosition = new Vector3(
+        target.position.x,
+        target.position.y,
+        transform.position.z
+    );
+
+    transform.position = Vector3.Lerp(
+        transform.position,
+        targetPosition,
+        smoothingSpeed * Time.deltaTime
+    );
+        
+}
+*/
+
+//C#에서 구조체 뒤에 ?를 붙이면 NULL값을 부여할 수 있다.
+//ex) Vector2? target = null;
