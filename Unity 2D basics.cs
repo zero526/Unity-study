@@ -51,6 +51,14 @@ void FixedUpdate()
     }
 }
 
+/*
+//평면에서의 대각선 이동을 포함한 최대 속도 제한
+if (rigid.velocity.magnitude > maxSpeed){
+    rigid.velocity = rigid.velocity.normalized * maxSpeed;
+}
+*/
+
+
 //캐릭터 이동중 빠른 정지, Update() 내부에
 if (Input.GetButtonUp("Horizontal"))
 {
@@ -80,9 +88,10 @@ else
     animator.SetBool("is_Walk", true);
 }
 
-Mathf.Abs //절댓값, Mathf는 유니티에서 제공하는 수학 라이브러리
-
-
-
+using Mathf.Abs; //절댓값, Mathf는 유니티에서 제공하는 수학 라이브러리
 
 //타일맵, 2D 조명 (RP? URP)
+
+
+//플레이어 이동시 방향키를 입력받아 좌/우를 바꾸는 애니메이션 적용 시 실제 이동방향과 다른 애니메이션인 상태로 움직이는 경우가 있음
+//사용자 입력이 아닌 실제 이동방향에 따라 애니메이션을 설정해야 오류가 안 날듯 함.
